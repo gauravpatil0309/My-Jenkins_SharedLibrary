@@ -2,7 +2,7 @@ def call() {
   node {
     stage('Check if gradle is already Installed') {
       // Choose a different directory where the Jenkins user has write permissions
-      def gradleDir = "/root/gradle"
+      def gradleDir = "/opt/gradle"
       def isGradleInstalled = sh(returnStdout: true, script: 'which gradle')
 
       if (isGradleInstalled == 0) {
