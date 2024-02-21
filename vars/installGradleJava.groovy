@@ -7,6 +7,8 @@ def call() {
       // Install Gradle
       sh "mkdir -p ${gradleDir}"
       sh "rm -rf /var/lib/jenkins/workspace/android-app@2/gradle/gradle-7.6.4/LICENSE"
+      sh "rm -rf /var/lib/jenkins/workspace/android-app@2/gradle/gradle-7.6.4/NOTICE"
+      sh "rm -rf /var/lib/jenkins/workspace/android-app@2/gradle/gradle-7.6.4/README"
       sh "wget https://services.gradle.org/distributions/gradle-7.6.4-bin.zip -P ${gradleDir}"
       sh "unzip -d ${gradleDir} ${gradleDir}/gradle-7.6.4-bin.zip"
       sh "export PATH=$PATH:${gradleDir}/gradle-7.6.4/bin"
