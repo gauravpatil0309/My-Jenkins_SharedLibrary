@@ -1,19 +1,21 @@
 def call() {
   node {
-    stage('Install Gradle') {
+    stage('Check if gradle is already Installed') {
       // Choose a different directory where the Jenkins user has write permissions
       def gradleDir = "${workspace}/gradle"
+      def isGradleInstalled = sh(returnStdout: true, script: 'which gradle').trim()
 
-      // Install Gradle
+      if (isGradleInstalled) {
+        echo "Gradle is already installed"
+      } else
+       stage (Install Gradle) {
       sh "mkdir -p ${gradleDir}"
-      //sh "rm -rf /var/lib/jenkins/workspace/android-app@2/gradle/gradle-7.6.4/LICENSE"
-      //sh "rm -rf /var/lib/jenkins/workspace/android-app@2/gradle/gradle-7.6.4/NOTICE"
-      //sh "rm -rf /var/lib/jenkins/workspace/android-app@2/gradle/gradle-7.6.4/README"
-      //sh "rm -rf /var/lib/jenkins/workspace/android-app@2/gradle/gradle-7.6.4/init.d/readme.txt"
       sh "wget https://services.gradle.org/distributions/gradle-7.6.4-bin.zip -P ${gradleDir}"
       sh "unzip -d ${gradleDir} ${gradleDir}/gradle-7.6.4-bin.zip"
       sh "export PATH=$PATH:${gradleDir}/gradle-7.6.4/bin"
-    }
+       }
+     } 
+   }   
 
     stage('Install Java') {
       // Install Java
