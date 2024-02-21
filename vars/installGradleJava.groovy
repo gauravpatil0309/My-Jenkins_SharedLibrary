@@ -10,7 +10,7 @@ def call() {
       } else {
       //sh "mkdir -p ${gradleDir}"
       sh "wget https://services.gradle.org/distributions/gradle-7.6.4-bin.zip /tmp"
-      sh "unzip /tmp /tmp/gradle-7.6.4-bin.zip"
+      sh "unzip /tmp/gradle-7.6.4-bin.zip"
       sh "which gradle"
       sh "cp /tmp/gradle-7.6.4/bin/gradle /usr/local/bin"
       //sh "export PATH=$PATH:${gradleDir}/gradle-7.6.4/bin"
