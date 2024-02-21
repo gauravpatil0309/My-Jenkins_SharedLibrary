@@ -3,6 +3,7 @@ def call() {
     stage('Install Gradle') {
       // Install Gradle
       sh 'wget https://services.gradle.org/distributions/gradle-7.6.4-bin.zip'
+      sh 'sudo su'
       sh 'unzip -d /opt/gradle gradle-7.6.4-bin.zip'
       sh 'export PATH=$PATH:/opt/gradle/gradle-7.6.4/bin'
     }
