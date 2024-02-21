@@ -14,7 +14,7 @@ def call() {
     stage('Install Java') {
       // Install Java
       //sh 'yum install -y java-1.8.0'
-      sh 'amazon-linux-extras install java-openjdk11 -y'
+      sh 'sudo amazon-linux-extras install java-openjdk11 -y'
     }
   }
 }
