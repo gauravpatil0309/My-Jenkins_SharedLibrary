@@ -7,15 +7,15 @@ def call() {
 
       if (isGradleInstalled) {
         echo "Gradle is already installed"
-      } else
+      } else {
        stage (Install Gradle) {
       sh "mkdir -p ${gradleDir}"
       sh "wget https://services.gradle.org/distributions/gradle-7.6.4-bin.zip -P ${gradleDir}"
       sh "unzip -d ${gradleDir} ${gradleDir}/gradle-7.6.4-bin.zip"
       sh "export PATH=$PATH:${gradleDir}/gradle-7.6.4/bin"
-       }
-     } 
-   }   
+        }
+      } 
+    }   
 
     stage('Install Java') {
       // Install Java
