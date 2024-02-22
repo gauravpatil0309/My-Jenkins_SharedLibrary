@@ -9,7 +9,7 @@ def call() {
       if (isGradleInstalled == 0) {
         echo "Gradle is already installed"
       } else {
-      sh "mkdir -p ${gradleDir}"
+      sh "sudo mkdir -p ${gradleDir}"
       sh "wget https://services.gradle.org/distributions/gradle-7.6.4-bin.zip -d ${gradleDir}"
       sh "unzip -d ${gradleDir} ${gradleDir}/gradle-7.6.4-bin.zip"
       //sh "cp ${gradleDir}/gradle-7.6.4/bin/gradle /usr/local/bin"
