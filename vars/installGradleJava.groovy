@@ -12,7 +12,7 @@ def call() {
         // Install Gradle
         sh "wget https://services.gradle.org/distributions/gradle-7.6.4-bin.zip -P ${gradleInstallationDir}"
         sh "unzip ${gradleInstallationDir}/gradle-7.6.4-bin.zip -d ${gradleInstallationDir}"
-        sh "ln -s ${gradleInstallationDir}/gradle-7.6.4 ${gradleInstallationDir}/gradle"
+        sh "ln -s ${gradleInstallationDir}/gradle-7.6.4 ${gradleInstallationDir}/gradle-7.6.4"
         sh "export PATH=${gradleInstallationDir}/gradle-7.6.4/bin:$PATH"
     }
 
