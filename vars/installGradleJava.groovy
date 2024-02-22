@@ -2,8 +2,9 @@ def call() {
   node {
     stage('Check if gradle is already Installed') {
       // Choose a different directory where the Jenkins user has write permissions
-      def gradleDir = "/mnt/gradle"
-      def isGradleInstalled = sh(returnStdout: true, script: 'which gradle')
+      def gradleDir = "/home/ec2-user"
+      def isGradleInstalled = sh(returnStatus: true, script: 'which gradle')
+      //def isGradleInstalled = sh(returnStdout: true, script: 'which gradle')
 
       if (isGradleInstalled == 0) {
         echo "Gradle is already installed"
@@ -11,9 +12,8 @@ def call() {
       sh "mkdir -p ${gradleDir}"
       sh "wget https://services.gradle.org/distributions/gradle-7.6.4-bin.zip -d ${gradleDir}"
       sh "unzip -d ${gradleDir} ${gradleDir}/gradle-7.6.4-bin.zip"
-      sh "which gradle"
-      sh "cp ${gradleDir}/gradle-7.6.4/bin/gradle /usr/local/bin"
-      //sh "export PATH=$PATH:${gradleDir}/gradle-7.6.4/bin"
+      //sh "cp ${gradleDir}/gradle-7.6.4/bin/gradle /usr/local/bin"
+      sh "export PATH=$PATH:${gradleDir}/gradle-7.6.4/bin"
         }
       }    
 
