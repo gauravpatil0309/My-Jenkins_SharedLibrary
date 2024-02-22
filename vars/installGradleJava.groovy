@@ -13,7 +13,7 @@ def call() {
         sh "wget https://services.gradle.org/distributions/gradle-7.6.4-bin.zip -P ${gradleInstallationDir}"
         sh "unzip ${gradleInstallationDir}/gradle-7.6.4-bin.zip -d ${gradleInstallationDir}"
         sh "ln -s ${gradleInstallationDir}/gradle-7.6.4 ${gradleInstallationDir}/gradle"
-        sh "export PATH=${gradleInstallationDir}/gradle/bin:$PATH"
+        sh "export PATH=${gradleInstallationDir}/gradle-7.6.4/bin:$PATH"
     }
 
     if (!javaInstalled) {
