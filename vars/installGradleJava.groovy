@@ -1,26 +1,29 @@
 def call() {
-  node {
-    stage('Check if gradle is already Installed') {
-      // Choose a different directory where the Jenkins user has write permissions
-      def gradleDir = ("/home/ec2-user/gradle")
-      def isGradleInstalled = sh(returnStatus: true, script: 'which gradle')
-      //def isGradleInstalled = sh(returnStdout: true, script: 'which gradle')
+    def gradleInstallationDir = "/usr/local/gradle"
+    def javaInstallationDir = "/usr/local/java"
 
-      if (isGradleInstalled == 0) {
-        echo "Gradle is already installed"
-      } else {
-      sh "sudo mkdir -p ${gradleDir}"
-      sh "wget https://services.gradle.org/distributions/gradle-7.6.4-bin.zip -d ${gradleDir}"
-      sh "unzip -d ${gradleDir} ${gradleDir}/gradle-7.6.4-bin.zip"
-      //sh "cp ${gradleDir}/gradle-7.6.4/bin/gradle /usr/local/bin"
-      sh "export PATH=$PATH:${gradleDir}/gradle-7.6.4/bin"
-        }
-      }    
+    // Check if Gradle is already installed
+    def gradleInstalled = fileExists(gradleInstallationDir)
 
-    stage('Install Java') {
-      // Install Java
-      //sh 'yum install -y java-1.8.0'
-      sh 'sudo amazon-linux-extras install java-openjdk11 -y'
+    // Check if Java 11 is already installed
+    def javaInstalled = sh(returnStdout: true, script: "java -version 2>&1 | grep '11\.'") == 0
+
+    if (!gradleInstalled) {
+        // Install Gradle
+        sh "wget https://services.gradle.org/distributions/gradle-7.6.4-bin.zip -P ${gradleInstallationDir}"
+        sh "unzip ${gradleInstallationDir}/gradle-7.6.4-bin.zip -d ${gradleInstallationDir}"
+        sh "ln -s ${gradleInstallationDir}/gradle-7.6.4 ${gradleInstallationDir}/gradle"
+        sh "export PATH=${gradleInstallationDir}/gradle/bin:$PATH"
     }
-  }
+
+    if (!javaInstalled) {
+        // Install Java 11
+        //sh "yum install -y java-11-openjdk-devel"
+          sh "sudo amazon-linux-extras install java-openjdk11 -y"
+    }
+}
+
+def fileExists(String path) {
+    def result = sh(returnStatus: true, script: "test -e ${path}")
+    return result == 0
 }
