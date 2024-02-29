@@ -23,7 +23,3 @@ def call() {
     }
 }
 
-def fileExists(String path) {
-    def result = sh(returnStatus: true, script: "test -e ${path}")
-    return result == 0
-}
