@@ -6,7 +6,7 @@ def call() {
     def gradleInstalled = fileExists(gradleInstallationDir)
 
     // Check if Java 11 is already installed
-    def javaInstalled = sh(returnStdout: true, script: "java -version 2>&1 | grep '1.8'") == 0
+    def javaInstalled = sh(returnStdout: true, script: "java -version 2>&1 | grep '11'") == 0
 
     if (!gradleInstalled) {
         // Install Gradle
@@ -19,9 +19,9 @@ def call() {
     if (!javaInstalled) {
         // Install Java 11
         //sh "yum install -y java-11-openjdk-devel"
-        //sh "sudo amazon-linux-extras install java-openjdk11 -y"
-          sh "sudo amazon-linux-extras enable corretto8"
-          sh "sudo yum install java-1.8.0-amazon-corretto -y"
+          sh "sudo amazon-linux-extras install java-openjdk11 -y"
+        //sh "sudo amazon-linux-extras enable corretto8"
+        //sh "sudo yum install java-1.8.0-amazon-corretto -y"
     }
 }
 
