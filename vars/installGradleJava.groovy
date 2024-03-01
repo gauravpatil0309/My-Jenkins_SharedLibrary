@@ -19,7 +19,9 @@ def call() {
     if (!javaInstalled) {
         // Install Java 11
         //sh "yum install -y java-11-openjdk-devel"
-          sh "sudo amazon-linux-extras install java-openjdk11 -y"
+        //sh "sudo amazon-linux-extras install java-openjdk11 -y"
+          sh "sudo amazon-linux-extras enable corretto8"
+          sh "yum install java-1.8.0-amazon-corretto"
     }
 }
 
