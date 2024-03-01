@@ -21,7 +21,7 @@ def call() {
         //sh "yum install -y java-11-openjdk-devel"
         //sh "sudo amazon-linux-extras install java-openjdk11 -y"
           sh "sudo amazon-linux-extras enable corretto8"
-          sh "sudo yum install java-1.8.0-amazon-corretto"
+          sh "sudo yum install java-1.8.0-amazon-corretto -y"
     }
 }
 
