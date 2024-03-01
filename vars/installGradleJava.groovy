@@ -6,7 +6,7 @@ def call() {
     def gradleInstalled = fileExists(gradleInstallationDir)
 
     // Check if Java 11 is already installed
-    def javaInstalled = sh(returnStdout: true, script: "java -version 2>&1 | grep '11'") == 0
+    def javaInstalled = sh(returnStdout: true, script: "java -version 2>&1 | grep '1.8'") == 0
 
     if (!gradleInstalled) {
         // Install Gradle
