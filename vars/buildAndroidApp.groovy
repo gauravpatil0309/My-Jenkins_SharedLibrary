@@ -1,4 +1,3 @@
 def call() {
-  sh './gradlew clean'
-  sh './gradlew build'
+  sh './gradlew assembleDebug'
 }
