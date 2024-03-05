@@ -1,7 +1,7 @@
 def call() {
     def gradleInstallationDir = "/usr/local/gradle"
     //def javaInstallationDir = "/usr/local/java"
-    def javaInstallationDir = "/usr/lib/jvm/java-11-openjdk-11.0.22.0.7-1.amzn2.0.1.x86_64"
+    def javaInstallationDir = "/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.402.b06-1.amzn2.0.1.x86_64"
 
     // Check if Gradle is already installed
     def gradleInstalled = fileExists(gradleInstallationDir)
