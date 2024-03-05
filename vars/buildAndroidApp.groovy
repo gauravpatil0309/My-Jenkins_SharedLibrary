@@ -1,4 +1,4 @@
 def call() {
-  sh './gradlew clean'
-  sh './gradlew assembleDebug'
+  sh 'cd /var/lib/jenkins/workspace/android-app && \ ./gradlew clean'
+  sh 'cd /var/lib/jenkins/workspace/android-app && \ ./gradlew assembleDebug'
 }
