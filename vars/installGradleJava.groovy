@@ -11,10 +11,10 @@ def call() {
 
     if (!gradleInstalled) {
         // Install Gradle
-        sh "wget https://services.gradle.org/distributions/gradle-7.6.4-bin.zip -P ${gradleInstallationDir}"
-        sh "unzip ${gradleInstallationDir}/gradle-7.6.4-bin.zip -d ${gradleInstallationDir}"
-        sh "ln -s ${gradleInstallationDir}/gradle-7.6.4 ${gradleInstallationDir}/gradle-7.6.4"
-        sh "export PATH=${gradleInstallationDir}/gradle-7.6.4/bin:$PATH"
+        sh "wget https://services.gradle.org/distributions/gradle-5.5-bin.zip -P ${gradleInstallationDir}"
+        sh "unzip ${gradleInstallationDir}/gradle-5.5-bin.zip -d ${gradleInstallationDir}"
+        sh "ln -s ${gradleInstallationDir}/gradle-5.5 ${gradleInstallationDir}/gradle-5.5"
+        sh "export PATH=${gradleInstallationDir}/gradle-5.5/bin:$PATH"
     }
 
     if (!javaInstalled) {
